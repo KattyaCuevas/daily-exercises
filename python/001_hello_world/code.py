@@ -1,8 +1,5 @@
 import sys
 
-name = 'world'
 sys.argv.pop(0)
-if sys.argv:
-    name = (' ').join(sys.argv)
-
+name = (' ').join(sys.argv) if sys.argv else 'world'
 print(f"Hello {name}!")
