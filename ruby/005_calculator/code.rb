@@ -1,12 +1,10 @@
 elements = ARGV.join('').split(%r{(\+|-|\*|\/)})
 
-numbers = []
-operator = :+
-elements.each_with_index do |element, i|
-  if i.odd?
-    operator = element.to_sym
-  else
-    numbers << element.to_i
-  end
+result = elements[0].to_i
+i = 1
+while i < elements.size
+  result = result.send(elements[i].to_sym, elements[i + 1].to_i)
+  i += 2
 end
-puts numbers.reduce(operator)
+
+puts result
